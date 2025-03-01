@@ -1,25 +1,26 @@
 #include<iostream>
 #include<algorithm>
 using namespace std;
-bool binary_search(int a[],int n,int l,int x ) { 
+int binary_search(int a[], int start,int end ,int x ) { 
     // sort(a,a+n);
-    l=0;
-   int  r=n-1;
-   int   m=(l+r)/2;
-    if(a[m]==x)
-    return true; 
+   int  m=(start+end)/2;
+   if(start>end){
+    return -1;
+   }
+    if(a[m]==x)                                                                              
+    return 1; 
     else if (a[m]<x){
-        return binary_search(a,n/2,l,x);
+        return binary_search(a,m+1,end,x);
     
     }
-    return binary_search(a,n/2,m+1,x);
+    return binary_search(a,start,m-1,x);
 
 }
 int main(){
     int a[10]={1,2,3,4,5,6,7,8,9,10};
    
-    bool kq= binary_search(a,10,0,4);
-    if(kq){
+    int kq= binary_search(a,0,9,1);
+    if(kq==1){
         cout<<" find " ;
 
     }

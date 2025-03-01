@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stack>
 #include<cstdlib>
+#include<iomanip>
 using namespace std;
 bool checktoantu(char c){
     if(c=='+' || c=='-'|| c=='*'|| c=='/' || c=='^')
@@ -10,29 +11,29 @@ bool checktoantu(char c){
 bool checktoanhang(char c){
     return isalnum(c);
 }
-int tinhtoan(int a ,int b,char c){
-    int kq;
+float tinhtoan(float a ,float b,char c){
+    float kq;
     switch(c){
         case '+' :
-            return kq= a+b;
+            kq= a+b;
             break;
         case '-' :
-            return kq=a-b;
+         kq=a-b;
             break;
         case '*': 
-            return kq=a*b;
+      kq=a*b;
             break;
         case '/': 
             if(b==0)
             cout<<"khong the chia";
             else
-            return kq= a/b;
+            kq= float(a)/b;
             break;
 
     }
-    return kq;
+  return kq;
 }
-int doisangso(char c){
+float doisangso(char c){
     if(c=='A')
      return 5;
      else if(c=='B')
@@ -45,27 +46,27 @@ int doisangso(char c){
      return 5;
      else if(c=='E')
      return 1;
-    return -1;
+     return 0; 
+
 }
 int main(){
-    stack<int> mystack;
+    stack<float> mystack;
     string s="ABC-/DEF+*+";
     for(int i=0;i<s.length();i++){
         if(checktoantu(s[i])){
             char c1,c2;
-            c1=mystack.top(); 
+            float a=mystack.top(); 
             mystack.pop();
-            c2=mystack.top();
+            float b=mystack.top();
             mystack.pop();
-            int a=doisangso(c1);
-            int b=doisangso(c2);
-            int kq = tinhtoan(b,a,s[i]);
+            float kq = tinhtoan(b,a,s[i]);
             mystack.push(kq);
         }
         if(checktoanhang(s[i])){
-            mystack.push(s[i]);
+            mystack.push(doisangso(s[i]));
         }
     }
-    int kq=mystack.top();
+    float kq=mystack.top();
+ 
     cout<<kq;
-}
+}   

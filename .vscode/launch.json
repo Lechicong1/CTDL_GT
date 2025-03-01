@@ -2,21 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(gdb) Attach",
+      "name": "Run C++ Program",
       "type": "cppdbg",
-      "request": "attach",
-      "program": "enter program name, for example ${workspaceFolder}/a.exe",
+      "request": "launch",
+      "program": "c:/CTDL_GT/linked_list/build/Debug/outDebug.exe",
+      "args": [],
+      "cwd": "c:/CTDL_GT/linked_list",
+      "externalConsole": true,
       "MIMode": "gdb",
-      "miDebuggerPath": "/path/to/gdb",
+      "miDebuggerPath": "gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
           "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        },
-        {
-          "description": "Set Disassembly Flavor to Intel",
-          "text": "-gdb-set disassembly-flavor intel",
           "ignoreFailures": true
         }
       ]
@@ -28,8 +26,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/CTDL_GT/linked_list",
-      "program": "c:/CTDL_GT/linked_list/build/Debug/outDebug",
+      "cwd": "c:/CTDL_GT/baitap",
+      "program": "c:/CTDL_GT/baitap/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

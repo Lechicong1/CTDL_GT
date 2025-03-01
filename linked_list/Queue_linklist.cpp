@@ -12,62 +12,80 @@ node *makeNode(int x){
 }
 class MyQueue{
     private : 
-    node *topNode=NULL;
-    int n=0;
+    node *front;
+    node *rear;
+    int size;
+    int numberItem;
     public : 
-    int size(){
-        return n;
-    }
+    MyQueue(int size){
+    front=rear=NULL;
+    this->size=size;
+    numberItem=0;
+   }
     bool isEmpty(){
-        if(topNode==NULL){
+        if(numberItem==0){
             return true;
         }
         return false;
     }
+    bool isFull(){
+        if(numberItem==size){
+            return true; 
+        }
+        return false;
+    } 
+    // them phan tu vao cuoi danh sach lien ket 
     void enQueue(int x){
-        node *newNode=makeNode(x);
-        if(topNode==NULL){
-           topNode=newNode;
-           return;
+        if(isFull()){
+            return;
         }
-        
-        newNode->next=topNode;
-        topNode=newNode;
+        node *newNode=makeNode(x); // tao node moi 
+        if(front==NULL){
+           rear=newNode;
+           front=newNode;
+          
+        }
+        else{
+           rear->next=newNode;  // noi node cuoi cung voi node moi them vao
+            rear=newNode;       // cho con tro rear tro den node cuoi 
+           
+        }
+        numberItem++;
+     
     }
-    void deQueue(){
-        if(topNode==NULL)
-        return; 
-        node *temp=topNode;
-        if(topNode->next==NULL){
-            topNode=NULL;
-            delete temp;
+    // xoa phan tu o dau dslk 
+    bool deQueue(){
+        if(isEmpty()){
+            return false;
         }
-        while(temp->next->next!=NULL){
-            temp=temp->next;
+        node *temp=front;
+        if(numberItem==1){
+             front=NULL;
         }
-        node *last=temp->next;
-        temp->next=NULL;
-        delete last;
+        else{
+            front=front->next;    // cho front tro vao node thu 2 
+
+        }
+        numberItem--;
+        delete temp;
+
+        
     }
     void peek(){        // peek la thang duoc them vao dau tien 
-        node *peek=topNode;
-        while(peek->next!=NULL){
-            peek=peek->next;
-        }
-        cout<<"peek : " << peek->data << endl;
-        delete peek;
+       cout<<front->data;
     }
     void show(){
-        node *temp=topNode;
+        node *temp=front;
         while(temp!=NULL){
             cout<<temp->data << "->" ;
             temp=temp->next;
         }
         cout<<"NULL"<<endl;
+        delete temp;
     }
 };
 int main(){
-    MyQueue Queue;
+    MyQueue Queue(10);
     Queue.enQueue(1);
     Queue.enQueue(2);
     Queue.enQueue(3);
