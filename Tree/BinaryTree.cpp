@@ -69,6 +69,39 @@ class MybinaryTree{
         duyetbst(temp->right);
 
     }
+    // duyet theo thu tu truoc 
+    void preOrder(NodeTree* roott){
+        // tham goc truoc , sau do tham ben trai va tham ben phai 
+        NodeTree *temp=roott;
+        if(temp==NULL)
+            return;
+        cout<<temp->data<< " " ;
+        preOrder(temp->left);
+        preOrder(temp->right);    
+
+    }
+     // duyet theo thu tu giua
+    void inOrder(NodeTree* roott){
+        // thu tu : trai - giua-phai
+        NodeTree *temp=roott;
+        if(temp==NULL)
+            return;
+        inOrder(temp->left);
+        cout<<temp->data << " ";
+        inOrder(temp->right);
+
+    }
+    // duyet theo thu tu sau 
+    void postOrder(NodeTree* roott){
+        //thu tu : trai-phai-goc 
+        NodeTree *temp=roott;
+        if(temp==NULL)
+            return;
+        postOrder(roott->left);
+        postOrder(roott->right);
+        cout<<temp->data << " ";
+        
+    }
   bool findNode(NodeTree* root,int key){
             if (root == nullptr) {
                 return false; // Không tìm thấy
