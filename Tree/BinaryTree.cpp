@@ -20,37 +20,44 @@ class MybinaryTree{
     NodeTree* getRoot(){
         return root;
     }
-    void insert(int val){
-        if(root==NULL){
-            root= new NodeTree(val);
-            return;
+    NodeTree* insert(NodeTree *roott,int val){
+        if(roott==NULL){
+            return new NodeTree(val);
         }
-        NodeTree* temp=root;
-       while(true){
-        
-        if(val>temp->data){
-            if(temp->right==NULL){
-                temp->right=new NodeTree(val);
-                break;
-            }
-            else{
-                temp=temp->right;
-            }
-        
+        if(val < roott->data){
+          roott->left= insert(roott->left,val);
         }
         else{
-            if(temp->left==NULL){
-                temp->left=new NodeTree(val);
-                break;
-            }
-            else{
-                temp=temp->left;
-            }
-          
+            root->right= insert(roott->right,val);
         }
-       }
+        return roott;                                      
+    }
 
-
+    //    while(true){
+        
+    //     if(val>temp->data){
+    //         if(temp->right==NULL){
+    //             temp->right=new NodeTree(val);
+    //             break;
+    //         }
+    //         else{
+    //             temp=temp->right;
+    //         }
+        
+    //     }
+    //     else{
+    //         if(temp->left==NULL){
+    //             temp->left=new NodeTree(val);
+    //             break;
+    //         }
+    //         else{
+    //             temp=temp->left;
+    //         }
+          
+    //     }
+    //    }
+    void insert(int value){
+        root=insert(this->root,value);
     }  
     void duyetbst(NodeTree* root){
         NodeTree* temp=root;
@@ -75,10 +82,49 @@ class MybinaryTree{
             return findNode(root->right,key);
           
         }
-    NodeTree* deleteNode(NodeTree* root,int key){
-
-
+    NodeTree* NodeMinMostLeft(NodeTree *roott){
+        NodeTree* temp=roott;
+        if(temp->left==NULL)
+         return temp;
+        return NodeMinMostLeft(temp->left);  
+    }
+    NodeTree* deleteNode(NodeTree* roott,int key){
+        if(roott==NULL)    // truong hop cay rong
+            return NULL;
+        if(key<roott->data){
+            roott->left=deleteNode(roott->left,key);    // tim node ben trai 
+        }
+        else if(key>root->data){                          // tim node ben phai 
+            roott->right=deleteNode(roott->right,key);
+        }
+        else{
+            // tim thay node can xoa 
+            //th1 : node co 1 con hoac khong co con 
+            if(roott->left==NULL){
+                NodeTree* temp=roott->right;
+                delete roott;
+                return temp;
+            }
+            else if(roott->right==NULL){
+                NodeTree *temp2=root->left;
+                delete roott;
+                return temp2;
+            }
+            else{
+                //th2 : node co 2 con 
+                //b1: tim node nho nhat ben nhanh phai (chon nhanh phai va duyet den node trai cung ben trai)
+                NodeTree *temp=NodeMinMostLeft(root->right);
+                root->data=temp->data ; // the node can xoa bang node vua tim duoc 
+                // xoa node temp di 
+                roott->right=deleteNode(roott->right,temp->data);
+            }
+            
+        }
+        // return ve node hien tai 
         return root;
+    }
+    void deleteNode(int val){
+        root=deleteNode(this->root,val);
     }
 
 };
