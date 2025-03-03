@@ -1,7 +1,9 @@
 #include<iostream>
-#include<vector>
 #include<stack>
 using namespace std;
+// chuyen tu thap phan sang nhi phan
+// chia lay du cho 2 , phan du day vao stack 
+// lay nguoc tu stack ra ->kq
 int main(){
   stack<int> myStack;
   int n=10;
@@ -11,16 +13,11 @@ int main(){
     myStack.push(temp);
     n=n/2;
   }
-  vector<int> output; 
   while(!myStack.empty()){
-   output.push_back(myStack.top());
+   cout<< myStack.top();
    myStack.pop();
 
   }
-  for(int x : output ){
-    cout<<x;
-  }
-
-
+  
 }
 
