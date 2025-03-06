@@ -28,7 +28,7 @@ class MybinaryTree{
           roott->left= insert(roott->left,val);
         }
         else{
-            root->right= insert(roott->right,val);
+            roott->right= insert(roott->right,val);
         }
         return roott;                                      
     }
@@ -59,16 +59,6 @@ class MybinaryTree{
     void insert(int value){
         root=insert(this->root,value);
     }  
-    void duyetbst(NodeTree* root){
-        NodeTree* temp=root;
-        if(temp==NULL){
-            return;
-        }
-        duyetbst(temp->left);
-        cout<<temp->data <<" " ; 
-        duyetbst(temp->right);
-
-    }
     // duyet theo thu tu truoc 
     void preOrder(NodeTree* roott){
         // tham goc truoc , sau do tham ben trai va tham ben phai 
@@ -102,7 +92,7 @@ class MybinaryTree{
         cout<<temp->data << " ";
         
     }
-  bool findNode(NodeTree* root,int key){
+  bool searchBst(NodeTree* root,int key){
             if (root == nullptr) {
                 return false; // Không tìm thấy
             }
@@ -110,9 +100,9 @@ class MybinaryTree{
                 return true;
             }
             if(key<root->data){
-                return findNode(root->left,key);
+                return searchBst(root->left,key);
             }
-            return findNode(root->right,key);
+            return searchBst(root->right,key);
           
         }
     NodeTree* NodeMinMostLeft(NodeTree *roott){
@@ -159,6 +149,15 @@ class MybinaryTree{
     void deleteNode(int val){
         root=deleteNode(this->root,val);
     }
+    // tim chieu cao max cua cay 
+    int maxDepth(NodeTree* root){
+        if(root==NULL)
+            return 0;
+        int hLeft=maxDepth(root->left);
+        int hRight=maxDepth(root->right);
+       return ((hLeft>hRight)?hLeft:hRight) +1;
+
+    }
 
 };
 int main(){
@@ -167,11 +166,8 @@ int main(){
     bst.insert(3);
     bst.insert(4);
     bst.insert(6);
-    bst.insert(9);
-    bst.duyetbst(bst.getRoot());
-    if(bst.findNode(bst.getRoot(),6))
-    cout<<"find"<<endl;
-    else
-    cout<<"not find"<<endl;
+    bst.insert(9);                                                                                                                                                                                                                                                                                                                                                                                 
+    bst.inOrder(bst.getRoot());
+    cout<< bst.maxDepth(bst.getRoot());
     
-}
+}   

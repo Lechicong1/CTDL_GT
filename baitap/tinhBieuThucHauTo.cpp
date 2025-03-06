@@ -51,7 +51,7 @@ float doisangso(char c){
 }
 int main(){
     stack<float> mystack;
-    string s="ABC-/DEF+*+";
+    string s="(3*x+2)^2*(2*x^2-x+5)+10";
     for(int i=0;i<s.length();i++){
         if(checktoantu(s[i])){
             char c1,c2;

@@ -101,7 +101,7 @@ int main(){
     - gap dau ) thi pop cac toan tu ra cho vao output den khi gap ( roi bo ( 
 
     */
-   string s="(A+B-C)*E/(F-G)+D";
+   string s="(3*x+2)^2*(2*x^2-x+5)+10";
     vector<char> output;
     for(int i=0;i<s.size();i++){
         if(checktoanhang(s[i])){     //toan hang -> output
