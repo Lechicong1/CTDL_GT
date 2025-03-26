@@ -9,11 +9,16 @@ void swap(int &a,int &b){
     b=temp;
 }
 int main(){
-    int a[5]={4,3,2,9,6}; 
-    for(int i=0;i<4;i++){
-        for(int j=i+1;j<5;j++){
-            if(a[i]>a[j]){
-                swap(a[i],a[j]);
+    int a[10];
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>n;
+    }
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(a[j]>a[j+1]){
+                swap(a[j],a[j+1]);
             }
         }
     }

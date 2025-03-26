@@ -56,14 +56,11 @@ class linklist{
         }
         void reverse(){
             node *current=head;
-          
             while(current!=NULL && current->next!=NULL){
                 node *next=current->next;
                 current->next=next->next;
-                next->next=current;
+                next->next=head;
                 head=next;
-               
-
             }
         }
 

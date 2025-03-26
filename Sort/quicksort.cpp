@@ -1,7 +1,7 @@
 #include<iostream>
 #include<algorithm>
 using namespace std;
-// phan hoac lomuto
+// phan hoach lomuto
 // chon 1 vi tri pivot ( truc ) , phan hoach mang thanh 2 phan 
 // phan ben trai chua cac phan tu nho hon pivot 
 // ben phai chua phan tu lon hon pivot 

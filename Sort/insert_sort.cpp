@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
     int a[3]={3,4,1}; 
-    for(int i=1;i<3;i++){      // i=2
+    for(int i=1;i<3;i++)     {      // i=2
        int x=a[i];         //x=1
        int index =i-1;     //index=1;
       while(x<a[index] && index>=0){    // 1<4       1<a[0]=3 

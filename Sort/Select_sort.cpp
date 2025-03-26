@@ -10,20 +10,17 @@ void swap(int &a,int &b){
 }
 int main(){
     int a[5]={4,3,2,9,6};
-    int start=0; 
-    while(start<5){  
-    int min=a[start];  
-    int index=start;     
-    for(int i=start;i<5;i++){                 
-       if(min>a[i]){       
-         min=a[i];              
-         index=i;               
-       }    
-           
+    for(int i=0;i<4;i++){
+        int min=i;
+    // tim vi tri min trong mang 
+    for(int j=i+1;j<5;j++){                 
+       if(a[min]>a[j]){       
+         min=j;                           
+       }     
     }
-    swap(a[start],a[index]);    
-    start++;                   
-
+    if(min!=i){
+        swap(a[min],a[i]);
+    }
     }
     cout<<"mang sau khi sap xep " <<endl;
     for(int i=0;i<5;i++){

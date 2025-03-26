@@ -1,12 +1,35 @@
 #include<iostream>
+#include<vector>
 using namespace std;
+void meger(vector<int> a,int l,int m,int r){
+
+    vector<int> left(a.begin()+1,a.begin()+m+1);
+    vector<int> right(a.begin()+m+1,a.begin()+r+1);
+    int i=0,j=0,k=l;
+    while(i<left.size() && j<right.size()){
+        if(left[i]<right[j]){
+            a[k++]=left[i++];
+        }
+        else{
+            a[k++]=right[j++];
+        }
+    }
+    // sao chep cac phan tu con lai cua mang trai 
+    while(i<left.size()){
+        a[k++]=left[i++];
+    }
+    while(j<right.size()){
+        a[k++]=right[j++];
+    }
+
+}
 
 void merge(int a[],int l,int m,int r){  //3 8   4 9 10
     int len_left=m-l+1;  // so luong phan tu mang ben trai 
     int len_right=r-m;   // so luong phan tu mang ben phai
     int *L=new int[len_left]; // tao mang tam de luu cac phan tu ben trai 
     int *R=new int[len_right];
-    // chuyen du lieu tu mang ben trai vao mang a_left
+    // chuyen du lieu tu mang ben trai vao mang a_leftx
     for(int i=0;i<len_left;i++){     
        L[i]=a[l+i];                 
     }
