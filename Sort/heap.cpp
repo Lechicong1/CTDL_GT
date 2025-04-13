@@ -65,7 +65,6 @@ class Heap{
         }
         queue<int> s;
         while(!isEmpty()){
-       
         int minRoot=heap[1];
         s.push(minRoot);
         //heapify down

@@ -30,23 +30,19 @@ bool Union(int u,int v){
     int root2=find(v);
     if(root1==root2) 
     return false;
-    if(size[root1]<size[root2]){
-        parent[root1]=root2;
-        size[root2]+=size[root1];
-        return true;
-    }
-    else{
-        parent[root2]=root1;
-        size[root1]+=size[root2];
-        return true;
-    }
+    if(size[root1]<size[root2])
+     swap(root1,root2);
+    parent[root2]=root1;
+    size[root1]+=size[root2];
+    return true;
 }
 vector<Edge> canh;
 void input(){
         cout<<" nhap so dinh " ; cin>>n;
         cout<<"nhap so canh " ; cin>>m;
-        for(int i=0;i<m;i++){
+        for(int i=1;i<=m;i++){
             int x,y,w;
+            cout<<"nhap thong so canh " << i << ": " ;
             cin>>x>>y>>w;
             Edge e=Edge(x,y,w);
             canh.push_back(e);
@@ -61,12 +57,24 @@ void kruskal(){
     int d=0;
     sort(canh.begin(),canh.end(),cmp); // sap xep cay khung theo trong so tang dan 
     for(int i=0;i<m;i++){
-        if(MST.size()==n-1) return ;
+        if(MST.size()==n-1) break ;
         Edge e=canh[i];
         if(Union(e.u,e.v)){    // kiem tra 2 dinh cua 1 canh co cung tap hop hay k
             MST.push_back(e);
             d+=e.w;
         }
     }
+    if(MST.size()!=n-1){
+        cout<<"khong tao thanh cay khung ";
+    }
+    else{
+        cout<<"cay khung co trong so " << d;
+    }
 }
 
+int main(){
+    input();
+    make_set();
+    kruskal();
+    return 0;
+}

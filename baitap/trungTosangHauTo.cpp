@@ -76,7 +76,7 @@ int doUuTien(char op) {
     return 0; // Trường hợp không phải toán tử hợp lệ
 }
 bool sosanhUuTien(char op1, char op2) {
-    if(op2=='(') return true;   
+    if(op2=='(' ) return true;   
     return doUuTien(op1) > doUuTien(op2);
 }
 
@@ -101,7 +101,7 @@ int main(){
     - gap dau ) thi pop cac toan tu ra cho vao output den khi gap ( roi bo ( 
 
     */
-   string s="(3*x+2)^2*(2*x^2-x+5)+10";
+   string s="(86/2+14)-(2+5*8)";
     vector<char> output;
     for(int i=0;i<s.size();i++){
         if(checktoanhang(s[i])){     //toan hang -> output
