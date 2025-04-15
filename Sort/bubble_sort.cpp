@@ -9,21 +9,21 @@ void swap(int &a,int &b){
     b=temp;
 }
 int main(){
-    int a[10];
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>n;
-    }
-    for(int i=0;i<n-1;i++){
-        for(int j=0;j<n-i-1;j++){
-            if(a[j]>a[j+1]){
-                swap(a[j],a[j+1]);
+    int a[6]={1,2,7,4,8,3};
+    // int n;
+    // cin>>n;
+    // for(int i=0;i<n;i++){
+    //     cin>>n;
+    // }
+    for(int i=0;i<6;i++){
+        for(int j=5;j>i;j--){
+            if(a[j]<a[j-1]){
+                swap(a[j],a[j-1]);
             }
         }
     }
     cout<<"mang sau khi sap xep " <<endl;
-    for(int i=0;i<5;i++){
+    for(int i=0;i<6 ;i++){
         cout<<a[i]<<" ";
     }
 
